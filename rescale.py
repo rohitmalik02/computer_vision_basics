@@ -8,6 +8,10 @@ def rescaleFrame(frame, scale=0.75):
 
     return cv.resize(frame, dimensions, interpolation=cv.INTER_AREA)
 
+def changeRes(width, height):
+    # works only for live capture/videos
+    capture.set(3, width)
+    capture.set(4, height)
 
 img = cv.imread("Photos/cat_large.jpg")
 cv.imshow('Cat', rescaleFrame(img, scale=0.2))
@@ -22,3 +26,13 @@ while True:
 
 capture.release()
 cv.destroyAllWindows()
+
+# capture = cv.VideoCapture(0)
+# while True:
+#     isTrue, frame = capture.read()
+#     cv.imshow('Video', rescaleFrame(frame))
+#     if (cv.waitKey(17) & 0xFF == ord('d')):
+#         break
+
+# capture.release()
+# cv.destroyAllWindows()
